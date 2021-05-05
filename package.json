@@ -9,11 +9,12 @@
   "scripts": {
     "build": "rimraf ./dist && tsc",
     "test": "npm run build && node ./scripts/default",
-    "demo": "npm run build && node ./scripts/demo"
+    "docs": "npm run build && node ./scripts/site"
   },
   "keywords": [],
   "author": "zyrouge",
   "license": "MIT",
+  "homepage": "",
   "devDependencies": {
     "@types/node": "^15.0.1",
     "rimraf": "^3.0.2",
