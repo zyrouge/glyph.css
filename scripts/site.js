@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs").promises;
+const { URL } = require("url");
 const util = require("util");
 const ncpCb = require("ncp");
 const glyph = require("../dist/generate").default;
@@ -34,7 +35,8 @@ const start = async () => {
     await fs.writeFile(CssPath, styles);
     console.log(`Created: ${CssPath}`);
 
-    await fs.writeFile(CnamePath, homepage);
+    const { origin } = new URL(homepage);
+    await fs.writeFile(CnamePath, origin);
     console.log(`Created: ${CnamePath}`);
 };
 

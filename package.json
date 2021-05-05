@@ -14,7 +14,7 @@
   "keywords": [],
   "author": "zyrouge",
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://glyph.js.org",
   "devDependencies": {
     "@types/node": "^15.0.1",
     "ncp": "^2.0.0",
