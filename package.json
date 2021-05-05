@@ -2,10 +2,14 @@
   "name": "glyph.css",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf ./dist && tsc",
-    "test": "npm run build && node test/default"
+    "test": "npm run build && node ./scripts/default",
+    "demo": "npm run build && node ./scripts/demo"
   },
   "keywords": [],
   "author": "zyrouge",

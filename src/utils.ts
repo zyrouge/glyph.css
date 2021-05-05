@@ -1,7 +1,8 @@
 export default {
-    MapStyles(styles: Record<string, string>, space: string = "") {
+    MapStyles(styles: Record<string, string | boolean>, space: string = "") {
         return Object.entries(styles)
-            .map(([key, val]) => `${space}${this.toHyphenCase(key)}: ${val};`)
+            .filter(([key, val]) => val !== false)
+            .map(([key, val]) => `${space}${this.toCssCase(key)}: ${val};`)
             .join("\n");
     },
     isObject: (x: any): x is object => typeof x === "object",
@@ -11,6 +12,6 @@ export default {
     expected: (key: string, exprected: string, received: string) =>
         `Expected type of '${key}' to be '${exprected}' but received '${received}'`,
     tabSpace: "    ",
-    toHyphenCase: (text: string) =>
+    toCssCase: (text: string) =>
         text.replace(/([A-Z])/g, (str) => `-${str.toLowerCase()}`),
 };

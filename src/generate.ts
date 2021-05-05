@@ -1,10 +1,12 @@
 import { promises as fs } from "fs";
+import DefaultStyles from "./defaultStyles";
 import Utils from "./utils";
 
 export interface TypographyOptions {
     selector: string;
-    styles: Record<string, string>;
+    styles: Record<string, string | boolean>;
 }
+
 
 export interface GlyphOptions {
     prefix: string;
@@ -28,37 +30,6 @@ export const TemplatesGenerator = (options: Partial<TypographyOptions>) => {
         options.styles,
         Utils.tabSpace
     )}\n}`;
-};
-
-export const DefaultTemplates = {
-    h1: {
-        fontSize: "2em",
-        fontWeight: "bold",
-    },
-    h2: {
-        fontSize: "1.5em",
-        fontWeight: "bold",
-    },
-    h3: {
-        fontSize: "1.3em",
-        fontWeight: "bold",
-    },
-    h4: {
-        fontSize: "1em",
-        fontWeight: "bold",
-    },
-    h5: {
-        fontSize: "0.8em",
-        fontWeight: "bold",
-    },
-    h6: {
-        fontSize: "0.7em",
-        fontWeight: "bold",
-    },
-    p: {
-        fontSize: "1rem",
-    },
-    code: {},
 };
 
 export const Glyph = async (options: Partial<GlyphOptions> = {}) => {
@@ -89,7 +60,7 @@ export const Glyph = async (options: Partial<GlyphOptions> = {}) => {
 
     const css: string[] = [];
 
-    let typographies = Object.entries(DefaultTemplates);
+    let typographies = Object.entries(DefaultStyles);
 
     if (options.includeOnly) {
         if (!Utils.isArray(options.includeOnly))
