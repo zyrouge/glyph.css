@@ -35,8 +35,8 @@ const start = async () => {
     await fs.writeFile(CssPath, styles);
     console.log(`Created: ${CssPath}`);
 
-    const { origin } = new URL(homepage);
-    await fs.writeFile(CnamePath, origin);
+    const { host } = new URL(homepage);
+    await fs.writeFile(CnamePath, host);
     console.log(`Created: ${CnamePath}`);
 };
 
